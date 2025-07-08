@@ -12,15 +12,17 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        //
+        $jurusan = Jurusan::all();
+        return view('admin.jurusan.index', compact('jurusan'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($request)
     {
-        //
+        $jurusan = Jurusan::all();
+        return view('admin.jurusan.create', compact('jurusan'));
     }
 
     /**
@@ -28,7 +30,14 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255|unique:jurusans,nama',
+        ]);
+        $jurusan = new Jurusan();
+        $jurusan->nama = $request->nama ;
+        $jurusan->save();
+
+        return redirect()->route('admin.jurusan.index')->with('success','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -44,7 +53,7 @@ class JurusanController extends Controller
      */
     public function edit(Jurusan $jurusan)
     {
-        //
+
     }
 
     /**
@@ -52,7 +61,14 @@ class JurusanController extends Controller
      */
     public function update(Request $request, Jurusan $jurusan)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255|unique:jurusans,nama'. $jurusan->id,
+        ]);
+        $jurusan = new Jurusan();
+        $jurusan->nama = $request->nama ;
+        $jurusan->save();
+
+        return redirect()->route('admin.jurusan.index')->with('success','Data Berhasil Diubah');
     }
 
     /**
