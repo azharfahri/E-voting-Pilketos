@@ -1,33 +1,50 @@
-<nav class="navbar-custom">
-    <ul class="list-unstyled topbar-nav float-right mb-0">
+<header class="topbar">
+    <div class="with-vertical">
+        <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav">
+                <li class="nav-item nav-icon-hover-bg rounded-circle ms-n2">
+                    <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+            </ul>
 
 
 
-        <li class="dropdown">
-            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#"
-                role="button" aria-haspopup="false" aria-expanded="false">
-                <span class="ml-1 nav-user-name hidden-sm">{{ Auth::user()->nama }}</span>
-                <i class="mdi mdi-account-circle"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i data-feather="power" class="align-self-center icon-xs icon-dual mr-1"></i>
-                    {{ __('Logout') }}
-                </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="d-flex align-items-center justify-content-between">
+                    <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
+                                <div class="d-flex align-items-center">
+                                    <div class="user-profile-img">
+                                        {{ Auth::user()->nama }}
+                                        <img src="{{ asset('adm/assets/images/profile/user-1.jpg') }}"
+                                            class="rounded-circle" width="35" height="35" alt="modernize-img" />
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up"
+                                aria-labelledby="drop1">
+                                <div class="profile-dropdown position-relative" data-simplebar>
+                                    <div class="d-grid py-4 px-7 pt-8">
+                                        <a class="btn btn-outline-primary" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </li>
-    </ul><!--end topbar-nav-->
-
-    <ul class="list-unstyled topbar-nav mb-0">
-        <li>
-            <button class="nav-link button-menu-mobile">
-                <i data-feather="menu" class="align-self-center topbar-icon"></i>
-            </button>
-        </li>
-    </ul>
-</nav>
+        </nav>
+    </div>
+</header>

@@ -1,47 +1,98 @@
-<div class="left-sidenav">
-    <!-- LOGO -->
-    <div class="brand">
-        <a href="dashboard/crm-index.html" class="logo">
-            <span>
-                <img src="{{ asset('adm/assets/images/logo-sm.png') }}" alt="logo-small" class="logo-sm">
-            </span>
-            <span>
-                <img src="{{ asset('adm/assets/images/logo.png') }}" alt="logo-large" class="logo-lg logo-light">
-                <img src="{{ asset('adm/assets/images/logo-dark.png') }}" alt="logo-large" class="logo-lg logo-dark">
-            </span>
-        </a>
-    </div>
-    <!--end logo-->
-    <div class="menu-content h-100" data-simplebar>
-        <ul class="metismenu left-sidenav-menu">
-            <li class="menu-label mt-0">Main</li>
-            <li>
-                <a href="{{ route('admin.dashboard') }}">
-                    <i data-feather="home" class="align-self-center menu-icon"></i>
-                    <span>Dashboard</span>
-            </li>
+        <aside class="left-sidebar with-vertical">
+            <div><!-- ---------------------------------- -->
+                <!-- Start Vertical Layout Sidebar -->
+                <!-- ---------------------------------- -->
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="{{ route('admin.dashboard') }}" class="text-nowrap logo-img">
+                        <img src="{{ asset('smk.png') }}" width="35%" class="dark-logo" alt="Logo-Dark" />
+                        <h5>Voting ketua osis</h5>
+                    </a>
+                    <a href="javascript:void(0)"
+                        class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+                        <i class="ti ti-x"></i>
+                    </a>
+                </div>
 
-            <li>
-                <a href="javascript: void(0);"><i data-feather="grid"
-                        class="align-self-center menu-icon"></i><span>Data</span><span class="menu-arrow"><i
-                            class="mdi mdi-chevron-right"></i></span></a>
-                <ul class="nav-second-level" aria-expanded="false">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.jurusan.index') }}"><i
-                                class="ti-control-record"></i>Jurusan</a></li>
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+                    <ul id="sidebarnav">
+                        <!-- ---------------------------------- -->
+                        <!-- Home -->
+                        <!-- ---------------------------------- -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <!-- ---------------------------------- -->
+                        <!-- Dashboard -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admin.dashboard') }}" id="get-url" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Home</span>
+                            </a>
+                        </li>
 
-                </ul>
-                <ul class="nav-second-level" aria-expanded="false">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.kelas.index') }}"><i
-                                class="ti-control-record"></i>Kelas</a></li>
+                        <!-- ---------------------------------- -->
+                        <!-- Frontend page -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-layout-grid"></i>
+                                </span>
+                                <span class="hide-menu">Table</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                                    <a href="{{ route ('admin.jurusan.index') }}" class="sidebar-link">
+                                        <div class="round-16 d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-circle"></i>
+                                        </div>
+                                        <span class="hide-menu">Jurusan</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="{{ route('admin.kelas.index') }}" class="sidebar-link">
+                                        <div class="round-16 d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-circle"></i>
+                                        </div>
+                                        <span class="hide-menu">Kelas</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="{{ route('admin.periode.index') }}" class="sidebar-link">
+                                        <div class="round-16 d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-circle"></i>
+                                        </div>
+                                        <span class="hide-menu">Periode</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="{{ route('admin.pemilih.index') }}" class="sidebar-link">
+                                        <div class="round-16 d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-circle"></i>
+                                        </div>
+                                        <span class="hide-menu">Pemilih</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                </ul>
-                <ul class="nav-second-level" aria-expanded="false">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.periode.index') }}"><i
-                                class="ti-control-record"></i>Periode</a></li>
 
-                </ul>
-            </li>
-        </ul>
 
-    </div>
-</div>
+
+
+
+
+                    </ul>
+                </nav>
+
+
+
+                <!-- ---------------------------------- -->
+                <!-- Start Vertical Layout Sidebar -->
+                <!-- ---------------------------------- -->
+            </div>
+        </aside>

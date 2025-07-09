@@ -1,76 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Shared on THEMELOCK.COM - Dastyle - Admin & Dashboard Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="" name="author" />
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('smk.png') }}" />
 
-    <!-- jvectormap -->
-    <link href="{{ asset('adm/plugins/jvectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet">
+    <!-- Core Css -->
+    <link rel="stylesheet" href="{{ asset('adm/assets/css/styles.css') }} "/>
 
-    <!-- App css -->
-    <link href="{{ asset('adm/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('adm/assets/css/jquery-ui.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('adm/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('adm/assets/css/metisMenu.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('adm/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('adm/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-
+    <title>E-Voting ketua osis</title>
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="{{ asset('adm/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}" />
 </head>
 
-<body class="dark-sidenav">
-    <!-- Left Sidenav -->
-    @include('layouts.components.sidebar')
-    <!-- end left-sidenav-->
-
-
-    <div class="page-wrapper">
-        <!-- Top Bar Start -->
-        <div class="topbar">
-            <!-- Navbar -->
-            @include('layouts.components.navbar')
-            <!-- end navbar-->
-        </div>
-        <!-- Top Bar End -->
-        <div class="page-content">
-            <div class="container-fluid">
-                @yield('content')
-            </div>
-        </div>
-        <!-- Page Content-->
-
-        <!-- end page content -->
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="{{ asset('adm/assets/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
     </div>
-    <!-- end page-wrapper -->
+    <div id="main-wrapper">
+        <!-- Sidebar Start -->
+        @include('layouts.components.sidebar')
+        <!--  Sidebar End -->
+        <div class="page-wrapper">
+            <!--  Header Start -->
+            @include('layouts.components.navbar')
+            <!--  Header End -->
 
 
 
+            <div class="body-wrapper">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
 
-    <!-- jQuery  -->
-    <script src="{{ asset('adm/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/metismenu.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/waves.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/feather.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/moment.js') }}"></script>
-    <script src="{{ asset('adm/plugins/daterangepicker/daterangepicker.js') }}"></script>
+        </div>
+    </div>
+    <div class="dark-transparent sidebartoggler"></div>
+    <script src="{{ asset('adm/assets/js/vendor.min.js')}}"></script>
+    <!-- Import Js Files -->
+    <script src="{{ asset('adm/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('adm/assets/libs/simplebar/dist/simplebar.min.js')}}"></script>
+    <script src="{{ asset('adm/assets/js/theme/app.init.js')}}"></script>
+    <script src="{{ asset('adm/assets/js/theme/theme.js')}}"></script>
+    <script src="{{ asset('adm/assets/js/theme/app.min.js')}}"></script>
+    <script src="{{ asset('adm/assets/js/theme/sidebarmenu.js')}}"></script>
 
-    <script src="{{ asset('adm/plugins/apex-charts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('adm/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('adm/plugins/jvectormap/jquery-jvectormap-us-aea-en.js') }}"></script>
-    <script src="{{ asset('adm/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="{{ asset('adm/assets/libs/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('adm/assets/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
+    <script src="{{ asset('adm/assets/js/dashboards/dashboard.js')}}"></script>
 
-    <!-- App js -->
-    <script src="{{ asset('adm/assets/js/app.js') }}"></script>
+
 @stack('scripts')
 </body>
 

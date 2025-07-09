@@ -1,24 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <div class="row">
-                    <div class="col">
-                        <h4 class="page-title">Data</h4>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">Halaman</a></li>
-                            <li class="breadcrumb-item active">Ubah kelas</li>
-                        </ol>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end page-title-box-->
-        </div><!--end col-->
-    </div>
+<h3>Ubah kelas</h3>
 
     <div class="card">
         <div class="card-body">
-            <h4>Ubah kelas</h4>
+
             <form action="{{ route('admin.kelas.update', $kelas->id) }}" method="post">
                 @csrf
                 @method('PUT')
@@ -27,7 +13,7 @@
                         <div class="form-floating mb-3">
                             <input type="text" value="{{ $kelas->nama }}" class="form-control" name="nama"
                                 value="{{ old('nama') }}" required>
-
+                                <label for="tb-name">Nama Kelas</label>
                             @error('nama')
                                 {{ $message }}
                             @enderror
@@ -36,12 +22,13 @@
                             <select class="form-control" name="id_jurusan">
                                 <option disabled selected>Pilih Jurusan</option>
                                 @foreach ($jurusan as $data)
-                                    <option value="{{ $data->id }}"{{ $kelas->id_jurusan == $data->id ? 'selected' : '' }}>
-
+                                    <option value="{{ $data->id }}"
+                                        {{ $kelas->id_jurusan == $data->id ? 'selected' : '' }}>
                                         {{ $data->nama }}
                                     </option>
                                 @endforeach
                             </select>
+                            <label for="tb-name">Jurusan</label>
                         </div>
                     </div>
                     <div class="col-12">

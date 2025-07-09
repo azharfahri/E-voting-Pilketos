@@ -14,4 +14,8 @@ class Kelas extends Model
     public function Jurusan(){
         return $this->belongsTo(Jurusan::class, 'id_jurusan');
     }
+
+    public function user(){
+        return $this->hasMany(User::class, 'id_kelas');
+    }
 }
