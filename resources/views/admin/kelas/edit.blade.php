@@ -8,7 +8,7 @@
                         <h4 class="page-title">Data</h4>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Halaman</a></li>
-                            <li class="breadcrumb-item active">Tambah Jurusan</li>
+                            <li class="breadcrumb-item active">Ubah kelas</li>
                         </ol>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -18,18 +18,30 @@
 
     <div class="card">
         <div class="card-body">
-            <h4>Tambah Jurusan</h4>
-            <form action="{{ route('admin.jurusan.store') }}" method="post">
+            <h4>Ubah kelas</h4>
+            <form action="{{ route('admin.kelas.update', $kelas->id) }}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-12"><br>
                         <div class="form-floating mb-3">
-                            <input type="text" placeholder="Masukan Nama Jurusan" class="form-control" name="nama"
+                            <input type="text" value="{{ $kelas->nama }}" class="form-control" name="nama"
                                 value="{{ old('nama') }}" required>
 
                             @error('nama')
                                 {{ $message }}
                             @enderror
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-control" name="id_jurusan">
+                                <option disabled selected>Pilih Jurusan</option>
+                                @foreach ($jurusan as $data)
+                                    <option value="{{ $data->id }}"{{ $kelas->id_jurusan == $data->id ? 'selected' : '' }}>
+
+                                        {{ $data->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-12">
@@ -37,7 +49,7 @@
                             <div class="ms-auto mt-3 mt-md-0">
                                 <button type="submit" class="btn btn-primary">
                                     <i></i>
-                                    Tambah
+                                    Ubah
                                 </button>
                             </div>
                         </div>

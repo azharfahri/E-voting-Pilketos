@@ -12,7 +12,8 @@ class PeriodeController extends Controller
      */
     public function index()
     {
-        //
+        $periode = Periode::all();
+        return view('admin.periode.index', compact('periode'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PeriodeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.periode.create');
     }
 
     /**
@@ -28,7 +29,16 @@ class PeriodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'mulai_vote' => 'required','date_format:"Y-m-d H:i:s"',
+            'selesai_vote' => 'required','date_format:"Y-m-d H:i:s"',
+        ]);
+        $periode = new periode();
+        $periode->mulai_vote = $request->mulai_vote ;
+        $periode->selesai_vote = $request->selesai_vote;
+        $periode->save();
+
+        return redirect()->route('admin.periode.index')->with('success','Data Berhasil Ditambahkan');
     }
 
     /**

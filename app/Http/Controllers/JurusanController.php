@@ -19,10 +19,9 @@ class JurusanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($request)
+    public function create()
     {
-        $jurusan = Jurusan::all();
-        return view('admin.jurusan.create', compact('jurusan'));
+        return view('admin.jurusan.create');
     }
 
     /**
@@ -53,7 +52,7 @@ class JurusanController extends Controller
      */
     public function edit(Jurusan $jurusan)
     {
-
+        return view('admin.jurusan.edit', compact('jurusan'));
     }
 
     /**
@@ -62,9 +61,9 @@ class JurusanController extends Controller
     public function update(Request $request, Jurusan $jurusan)
     {
         $request->validate([
-            'nama' => 'required|string|max:255|unique:jurusans,nama'. $jurusan->id,
+            'nama' => 'required|string|max:255|unique:jurusans,nama,'. $jurusan->id,
         ]);
-        $jurusan = new Jurusan();
+
         $jurusan->nama = $request->nama ;
         $jurusan->save();
 
@@ -76,6 +75,7 @@ class JurusanController extends Controller
      */
     public function destroy(Jurusan $jurusan)
     {
-        //
+        $jurusan->delete();
+        return redirect()->route('admin.jurusan.index')->with('success','Data Telah Berhasil Dihapus');;
     }
 }

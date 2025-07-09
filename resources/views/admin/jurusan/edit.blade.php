@@ -8,7 +8,7 @@
                         <h4 class="page-title">Data</h4>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Halaman</a></li>
-                            <li class="breadcrumb-item active">Tambah Jurusan</li>
+                            <li class="breadcrumb-item active">Ubah Jurusan</li>
                         </ol>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -18,13 +18,14 @@
 
     <div class="card">
         <div class="card-body">
-            <h4>Tambah Jurusan</h4>
-            <form action="{{ route('admin.jurusan.store') }}" method="post">
+            <h4>Ubah Jurusan</h4>
+            <form action="{{ route('admin.jurusan.update', $jurusan->id) }}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-12"><br>
                         <div class="form-floating mb-3">
-                            <input type="text" placeholder="Masukan Nama Jurusan" class="form-control" name="nama"
+                            <input type="text" value="{{ $jurusan->nama }}" class="form-control" name="nama"
                                 value="{{ old('nama') }}" required>
 
                             @error('nama')
@@ -37,7 +38,7 @@
                             <div class="ms-auto mt-3 mt-md-0">
                                 <button type="submit" class="btn btn-primary">
                                     <i></i>
-                                    Tambah
+                                    Ubah
                                 </button>
                             </div>
                         </div>

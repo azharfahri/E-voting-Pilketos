@@ -39,9 +39,13 @@
             <!-- end navbar-->
         </div>
         <!-- Top Bar End -->
-
+        <div class="page-content">
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </div>
         <!-- Page Content-->
-        @yield('content')
+
         <!-- end page content -->
     </div>
     <!-- end page-wrapper -->
@@ -67,7 +71,7 @@
 
     <!-- App js -->
     <script src="{{ asset('adm/assets/js/app.js') }}"></script>
-
+@stack('scripts')
 </body>
 
 </html>

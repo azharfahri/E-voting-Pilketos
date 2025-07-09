@@ -13,4 +13,13 @@ class Jurusan extends Model
     public function Kelas(){
         return $this->hasMany(Kelas::class, 'id_jurusan');
     }
+
+    protected static function booted()
+    {
+        static::deleting(function ($jurusan) {
+            if ($jurusan->kelas()->count() > 0) {
+                throw new \Exception("Jurusan masih digunakan oleh data kelas, tidak bisa dihapus.");
+            }
+        });
+    }
 }

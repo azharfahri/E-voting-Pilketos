@@ -8,7 +8,7 @@
                         <h4 class="page-title">Analytics</h4>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Dastyle</a></li>
-                            <li class="breadcrumb-item active">Jurusan</li>
+                            <li class="breadcrumb-item active">Kelas</li>
                         </ol>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Data jurusan</h4>
+                        <h4>Data Kelas</h4>
                     </div>
 
 
@@ -38,25 +38,27 @@
                                 </div>
                             </div>
                         @endif
-                        <a href="{{ route('admin.jurusan.create') }}" type="button" class="btn btn-primary">Tambah</a>
+                        <a href="{{ route('admin.kelas.create') }}" type="button" class="btn btn-primary">Tambah</a>
                         <table class="table">
 
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nama Jurusan</th>
+                                    <th scope="col">Kelas</th>
+                                    <th scope="col">Jurusan</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
-                            @forelse ($jurusan as $data)
+                            @forelse ($kelas as $data)
                             <tbody>
 
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->jurusan->nama }}</td>
                                         <td>
-                                            <form action="{{ route('admin.jurusan.destroy', $data->id) }}" method="POST">
-                                                <a href="{{ route('admin.jurusan.edit', $data->id) }}" type="button"
+                                            <form action="{{ route('admin.kelas.destroy', $data->id) }}" method="POST">
+                                                <a href="{{ route('admin.kelas.edit', $data->id) }}" type="button"
                                                     class="btn btn-success">Edit</a>
                                                 @csrf
                                                 @method('DELETE')

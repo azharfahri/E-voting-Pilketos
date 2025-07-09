@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\PeriodeController;
+use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,11 +17,25 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('jurusan', JurusanController::class);
-
 Route::get('/testing', function () {
     return view('layouts.admin');
 });
+
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'middleware'=> ['auth', isAdmin::class]
+], function (){
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('jurusan', JurusanController::class);
+    Route::resource('kelas', KelasController::class)->parameters(['kelas' => 'kelas']);
+    Route::resource('periode', PeriodeController::class);
+});
+
+
+
+
+
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::resource('jurusan', JurusanController::class);
+// });
