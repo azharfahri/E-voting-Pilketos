@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->bigInteger('nis')->unique()->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->foreignId('id_kelas')->nullable()->constrained('kelas')->nullOnDelete();
             $table->string('password');
             $table->enum('status_pemilih',['belum memilih','sudah memilih'])->default('belum memilih');

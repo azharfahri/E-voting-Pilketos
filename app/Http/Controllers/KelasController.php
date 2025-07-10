@@ -82,7 +82,12 @@ class KelasController extends Controller
      */
     public function destroy(Kelas $kelas)
     {
-        $kelas->delete();
-        return redirect()->route('admin.kelas.index')->with('success','Data Telah Berhasil Dihapus');;
+
+        try {
+            $kelas->delete();
+        return redirect()->route('admin.kelas.index')->with('success','Data Telah Berhasil Dihapus');
+        } catch (\Throwable $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

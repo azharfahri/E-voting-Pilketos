@@ -30,15 +30,17 @@ class PeriodeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'mulai_vote' => 'required','date_format:"Y-m-d H:i:s"',
-            'selesai_vote' => 'required','date_format:"Y-m-d H:i:s"',
+            'mulai_vote' => 'required',
+            'date_format:"Y-m-d H:i:s"',
+            'selesai_vote' => 'required',
+            'date_format:"Y-m-d H:i:s"',
         ]);
         $periode = new periode();
-        $periode->mulai_vote = $request->mulai_vote ;
+        $periode->mulai_vote = $request->mulai_vote;
         $periode->selesai_vote = $request->selesai_vote;
         $periode->save();
 
-        return redirect()->route('admin.periode.index')->with('success','Data Berhasil Ditambahkan');
+        return redirect()->route('admin.periode.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -63,14 +65,16 @@ class PeriodeController extends Controller
     public function update(Request $request, Periode $periode)
     {
         $request->validate([
-            'mulai_vote' => 'required','date_format:"Y-m-d H:i:s"',
-            'selesai_vote' => 'required','date_format:"Y-m-d H:i:s"',
+            'mulai_vote' => 'required',
+            'date_format:"Y-m-d H:i:s"',
+            'selesai_vote' => 'required',
+            'date_format:"Y-m-d H:i:s"',
         ]);
-        $periode->mulai_vote = $request->mulai_vote ;
+        $periode->mulai_vote = $request->mulai_vote;
         $periode->selesai_vote = $request->selesai_vote;
         $periode->save();
 
-        return redirect()->route('admin.periode.index')->with('success','Data Berhasil Diubah');
+        return redirect()->route('admin.periode.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -78,7 +82,12 @@ class PeriodeController extends Controller
      */
     public function destroy(Periode $periode)
     {
-        $periode->delete();
-        return redirect()->route('admin.periode.index')->with('success','Data Telah Berhasil Dihapus');;
+
+        try {
+            $periode->delete();
+            return redirect()->route('admin.periode.index')->with('success', 'Data Telah Berhasil Dihapus');
+        } catch (\Throwable $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

@@ -5,8 +5,15 @@
         <div class="card">
             <div class="card-body">
                 @if (session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
                         {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                        {{ session('error') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
@@ -25,8 +32,8 @@
                         @forelse ($periode as $item)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $item->mulai_vote }}</td>
-                                <td>{{ $item->selesai_vote }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->mulai_vote)->format('d M Y, H:i') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->selesai_vote)->format('d M Y, H:i') }}</td>
                                 <td>
                                     <form action="{{ route('admin.periode.destroy', $item->id) }}" method="POST">
                                         <a href="{{ route('admin.periode.edit', $item->id) }}" type="button"
@@ -43,12 +50,11 @@
                     </tbody>
 
                 @empty
-                <tr>
-                    <td align="center" colspan="6">
-                        <h6>belum ada data</h6>
-                    </td>
-                </tr>
-
+                    <tr>
+                        <td align="center" colspan="6">
+                            <h6>belum ada data</h6>
+                        </td>
+                    </tr>
                     @endforelse
 
                 </table>

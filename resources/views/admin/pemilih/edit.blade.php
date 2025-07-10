@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <h3>Atur Waktu Voting</h3>
+    <h3>Edit Akun Pemilih</h3>
     <div class="card">
         <div class="card-body">
             @if ($errors->any())
@@ -12,24 +12,36 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('admin.periode.update', $periode->id ) }}" method="post">
+            <form action="{{ route('admin.pemilih.update' , $pemilih->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="mulai_vote" value="{{ \Carbon\Carbon::parse($periode->mulai_vote)->format('Y-m-d') }}" required>
-                            <label for="tb-name">Mulai dari</label>
-                            @error('mulai_vote')
+                            <input type="text" class="form-control" name="nama" value="{{ $pemilih->nama }}" required>
+                            <label for="tb-name">Masukan Nama pemilih</label>
+                            @error('nama')
                                 {{ $message }}
                             @enderror
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="selesai_vote" value="{{ \Carbon\Carbon::parse($periode->selesai_vote)->format('Y-m-d') }}" required>
-                            <label for="tb-name">selesai sampai</label>
-                            @error('selesai_vote')
+                            <input type="number" class="form-control" name="nis" value="{{ $pemilih->nis }}" required>
+                            <label for="tb-name">Masukan nis</label>
+                            @error('nis')
                                 {{ $message }}
                             @enderror
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" name="id_kelas">
+                                <option disabled selected>Pilih Kelas</option>
+                                @foreach ($kelas as $data)
+                                    <option value="{{ $data->id }}"
+                                        {{ $pemilih->id_kelas == $data->id ? 'selected' : '' }}>
+                                        {{ $data->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <label for="tb-name">Kelas</label>
                         </div>
                     </div>
                     <div class="col-12">

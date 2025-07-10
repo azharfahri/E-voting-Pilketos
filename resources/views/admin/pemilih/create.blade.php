@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <h3>Tambah kelas</h3>
+    <h3>Tambah Akun Pemilih</h3>
     <div class="card">
         <div class="card-body">
             @if ($errors->any())
@@ -12,30 +12,45 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('admin.kelas.store') }}" method="post">
+            <form action="{{ route('admin.pemilih.store') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="nama" value="{{ old('nama') }}" required>
-                            <label for="tb-name">Masukan Nama kelas</label>
+                            <label for="tb-name">Masukan Nama pemilih</label>
                             @error('nama')
                                 {{ $message }}
                             @enderror
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="id_jurusan">
-                                @if ($jurusan->count() == 0)
-                                    <option disabled selected>Jurusan belum ada, Tambah jurusan terlebih dahulu</option>
+                            <input type="number" class="form-control" name="nis" value="{{ old('nis') }}" required>
+                            <label for="tb-name">Masukan nis</label>
+                            @error('nis')
+                                {{ $message }}
+                            @enderror
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" name="id_kelas">
+                                <option disabled selected>Pilih Kelas</option>
+                                @if ($kelas->count() == 0)
+                                    <option disabled selected>Kelas belum ada, Tambah kelas terlebih dahulu</option>
                                 @else
-                                    <option disabled selected>Pilih Jurusan</option>
+                                    <option disabled selected>Pilih Kelas</option>
                                 @endif
-
-                                @foreach ($jurusan as $data)
+                                @foreach ($kelas as $data)
                                     <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                 @endforeach
                             </select>
-                            <label for="tb-name">Nama Jurusan</label>
+                            <label for="tb-name">Kelas</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="password" value="{{ old('password') }}"
+                                required>
+                            <label for="tb-name">Atur password</label>
+                            @error('password')
+                                {{ $message }}
+                            @enderror
                         </div>
                     </div>
                     <div class="col-12">
