@@ -22,21 +22,7 @@
                             <input type="text" value="{{ $kelas->nama }}" class="form-control" name="nama"
                                 value="{{ old('nama') }}" required>
                                 <label for="tb-name">Nama Kelas</label>
-                            @error('nama')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-control" name="id_jurusan">
-                                <option disabled selected>Pilih Jurusan</option>
-                                @foreach ($jurusan as $data)
-                                    <option value="{{ $data->id }}"
-                                        {{ $kelas->id_jurusan == $data->id ? 'selected' : '' }}>
-                                        {{ $data->nama }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <label for="tb-name">Jurusan</label>
+                            
                         </div>
                     </div>
                     <div class="col-12">

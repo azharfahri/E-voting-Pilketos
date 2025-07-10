@@ -27,13 +27,17 @@ class JurusanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+
     public function store(Request $request)
     {
         $request->validate([
             'nama' => 'required|string|max:255|unique:jurusans,nama',
+            'singkatan' => 'required|string|max:10|unique:jurusans,singkatan',
         ]);
         $jurusan = new Jurusan();
         $jurusan->nama = $request->nama ;
+        $jurusan->singkatan = $request->singkatan;
         $jurusan->save();
 
         return redirect()->route('admin.jurusan.index')->with('success','Data Berhasil Ditambahkan');
@@ -62,9 +66,11 @@ class JurusanController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255|unique:jurusans,nama,'. $jurusan->id,
+            'singkatan' => 'required|string|max:10|unique:jurusans,singkatan,' . $jurusan->id,
         ]);
 
         $jurusan->nama = $request->nama ;
+        $jurusan->singkatan = $request->singkatan;
         $jurusan->save();
 
         return redirect()->route('admin.jurusan.index')->with('success','Data Berhasil Diubah');

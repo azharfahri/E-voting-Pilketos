@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurusan;
 use App\Models\Suara;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SuaraController extends Controller
@@ -12,7 +14,8 @@ class SuaraController extends Controller
      */
     public function index()
     {
-        //
+        $pemilih = User::where('is_admin', false)->get();
+        return view('admin.suara.index', compact('pemilih'));
     }
 
     /**

@@ -9,6 +9,7 @@ class Jurusan extends Model
     protected $fillable = [
         'id',
         'nama',
+        'singkatan'
     ];
     public function Kelas(){
         return $this->hasMany(Kelas::class, 'id_jurusan');

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
-        <h3>Data pemilih</h3>
+        <h3>Suara</h3>
         <div class="card">
             <div class="card-body">
                 @if (session('success'))
@@ -17,41 +17,25 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <a href="{{ route('admin.pemilih.create') }}" type="button" class="btn btn-primary">Tambah</a>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Nis</th>
-                            <th scope="col">Nama Siswa</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">Kelas</th>
                             <th scope="col">Jurusan</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Memilih</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        @forelse ($pemilih as $item)
+                        {{-- @forelse ($suara as $item)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $item->nis }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->kelas?->nama }}</td>
                                 <td>{{ $item->kelas?->jurusan->nama }}</td>
                                 <td>{{ $item->status_pemilih }}</td>
-                                <td>
-                                    <form action="{{ route('admin.pemilih.destroy', $item->id) }}" method="POST">
-                                        <a href="{{ route('admin.pemilih.edit', $item->id) }}" type="button"
-                                            class="btn btn-success">Edit</a>
-                                        {{-- <a href="#" type="button" class="btn btn-warning">Show</a> --}}
-
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Apa kamu yakin?')">Delete</button>
-                                    </form>
-                                </td>
                             </tr>
                     </tbody>
                 @empty
@@ -60,7 +44,7 @@
                             <h6>belum ada data</h6>
                         </td>
                     </tr>
-                    @endforelse
+                    @endforelse --}}
 
                 </table>
             </div>

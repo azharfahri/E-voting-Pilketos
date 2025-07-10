@@ -25,6 +25,15 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="singkatan" value="{{ $jurusan->singkatan }}" required>
+                            <label for="tb-name">Singkatan</label>
+                            @error('nama')
+                                {{ $message }}
+                            @enderror
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="d-md-flex align-items-center">
                             <div class="ms-auto mt-3 mt-md-0">

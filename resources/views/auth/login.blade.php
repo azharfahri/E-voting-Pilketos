@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,212 +70,114 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
 
 
-{{-- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Shared on THEMELOCK.COM - Dastyle - Admin & Dashboard Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="" name="author" />
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('adm/assets/images/favicon.ico') }}">
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('adm/assets/images/logos/favicon.png') }}" />
 
-    <!-- App css -->
-    <link href="{{ asset('adm/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('adm/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('adm/assets/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Core Css -->
+    <link rel="stylesheet" href="{{ asset('adm/assets/css/styles.css') }}" />
 
+    <title>Modernize Bootstrap Admin</title>
 </head>
 
-<body class="account-body accountbg">
-
-    <!-- Log In page -->
-    <div class="container">
-        <div class="row vh-100 d-flex justify-content-center">
-            <div class="col-12 align-self-center">
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="{{ asset('adm/assets/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
+    </div>
+    <div id="main-wrapper" class="auth-customizer-none">
+        <div class="position-relative overflow-hidden radial-gradient min-vh-100 w-100">
+            <div class="position-relative z-index-5">
                 <div class="row">
-                    <div class="col-lg-5 mx-auto">
-                        <div class="card">
-                            <div class="card-body p-0 auth-header-box">
-                                <div class="text-center p-3">
-                                    <a href="index.html" class="logo logo-admin">
-                                        <img src="{{ asset('adm/assets/images/logo-sm.png') }}" height="50"
-                                            alt="logo" class="auth-logo">
-                                    </a>
-                                    <h4 class="mt-3 mb-1 font-weight-semibold text-white font-18">Let's Get Started
-                                        Dastyle</h4>
-                                    <p class="text-muted  mb-0">Sign in to continue to Dastyle.</p>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <ul class="nav-border nav nav-pills" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active font-weight-semibold" data-toggle="tab"
-                                            href="#LogIn_Tab" role="tab">Log In</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-semibold" data-toggle="tab" href="#Register_Tab"
-                                            role="tab">Register</a>
-                                    </li>
-                                </ul>
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div class="tab-pane active p-3 pt-3" id="LogIn_Tab" role="tabpanel">
-                                        <form class="form-horizontal auth-form my-4" action="index.html">
+                    <div class="col-xl-7 col-xxl-8">
+                        <a href="#" class="text-nowrap logo-img d-block px-4 py-9 w-100">
+                            <img src="{{ asset('adm/assets/images/logos/dark-logo.svg') }}" class="dark-logo" alt="Logo-Dark" />
+                            <img src="{{ asset('adm/assets/images/logos/light-logo.svg') }}" class="light-logo" alt="Logo-light" />
+                        </a>
+                        <div class="d-none d-xl-flex align-items-center justify-content-center h-n80">
+                            <img src="{{ asset('adm/assets/images/backgrounds/login-security.svg') }}" alt="modernize-img"
+                                class="img-fluid" width="500">
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-xxl-4">
+                        <div
+                            class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                            <div class="auth-max-width col-sm-8 col-md-6 col-xl-7 px-4">
+                                <h2 class="mb-1 fs-7 fw-bolder">Welcome to Ecommerce</h2>
+                                <p class="mb-7">Your Admin Dashboard</p>
 
-                                            <div class="form-group">
-                                                <label for="username">Username</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="username"
-                                                        id="username" placeholder="Enter username">
-                                                </div>
-                                            </div><!--end form-group-->
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input id="email" type="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
 
-                                            <div class="form-group">
-                                                <label for="userpassword">Password</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="password" class="form-control" name="password"
-                                                        id="userpassword" placeholder="Enter password">
-                                                </div>
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group row mt-4">
-                                                <div class="col-sm-6">
-                                                    <div class="custom-control custom-switch switch-success">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customSwitchSuccess">
-                                                        <label class="custom-control-label text-muted"
-                                                            for="customSwitchSuccess">Remember me</label>
-                                                    </div>
-                                                </div><!--end col-->
-                                                <div class="col-sm-6 text-right">
-                                                    <a href="auth-recover-pw.html" class="text-muted font-13"><i
-                                                            class="dripicons-lock"></i> Forgot password?</a>
-                                                </div><!--end col-->
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group mb-0 row">
-                                                <div class="col-12 mt-2">
-                                                    <button class="btn btn-primary btn-block waves-effect waves-light"
-                                                        type="button">Log In <i
-                                                            class="fas fa-sign-in-alt ml-1"></i></button>
-                                                </div><!--end col-->
-                                            </div> <!--end form-group-->
-                                        </form><!--end form-->
-                                        <div class="m-3 text-center text-muted">
-                                            <p class="">Don't have an account ? <a href="auth-register.html"
-                                                    class="text-primary ml-2">Free Resister</a></p>
-                                        </div>
-                                        <div class="account-social">
-                                            <h6 class="my-4">Or Login With</h6>
-                                        </div>
-                                        <div class="btn-group btn-block">
-                                            <button type="button"
-                                                class="btn btn-sm btn-outline-secondary">Facebook</button>
-                                            <button type="button"
-                                                class="btn btn-sm btn-outline-secondary">Twitter</button>
-                                            <button type="button"
-                                                class="btn btn-sm btn-outline-secondary">Google</button>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                                        <input id="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            required autocomplete="current-password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input primary" name="remember" type="checkbox"
+                                                value="" id="flexCheckChecked">
+                                            <label class="form-check-label text-dark fs-3" for="flexCheckChecked">
+                                                Remeber this Device
+                                            </label>
                                         </div>
                                     </div>
-                                    <div class="tab-pane px-3 pt-3" id="Register_Tab" role="tabpanel">
-                                        <form class="form-horizontal auth-form my-4" action="index.html">
-
-                                            <div class="form-group">
-                                                <label for="username">Username</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="username"
-                                                        id="username" placeholder="Enter username">
-                                                </div>
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group">
-                                                <label for="useremail">Email</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="email" class="form-control" name="email"
-                                                        id="useremail" placeholder="Enter Email">
-                                                </div>
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group">
-                                                <label for="userpassword">Password</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="password" class="form-control" name="password"
-                                                        id="userpassword" placeholder="Enter password">
-                                                </div>
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group">
-                                                <label for="conf_password">Confirm Password</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="password" class="form-control" name="conf-password"
-                                                        id="conf_password" placeholder="Enter Confirm Password">
-                                                </div>
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group">
-                                                <label for="mo_number">Mobile Number</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="mobile number"
-                                                        id="mo_number" placeholder="Enter Mobile Number">
-                                                </div>
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group row mt-4">
-                                                <div class="col-sm-12">
-                                                    <div class="custom-control custom-switch switch-success">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customSwitchSuccess2">
-                                                        <label class="custom-control-label text-muted"
-                                                            for="customSwitchSuccess2">You agree to the Metrica <a
-                                                                href="#" class="text-primary">Terms of
-                                                                Use</a></label>
-                                                    </div>
-                                                </div><!--end col-->
-                                            </div><!--end form-group-->
-
-                                            <div class="form-group mb-0 row">
-                                                <div class="col-12 mt-2">
-                                                    <button class="btn btn-primary btn-block waves-effect waves-light"
-                                                        type="button">Register <i
-                                                            class="fas fa-sign-in-alt ml-1"></i></button>
-                                                </div><!--end col-->
-                                            </div> <!--end form-group-->
-                                        </form><!--end form-->
-                                        <p class="mb-0 text-muted">Already have an account ?<a href="auth-login.html"
-                                                class="text-primary ml-2">Log in</a></p>
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Login') }}
+                                    </button>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p class="fs-4 mb-0 fw-medium">Dont have any account?</p>
+                                        <a href="{{ route('register') }}"
+                                            class="text-primary text-gradient font-weight-bold">Register</a>
                                     </div>
-                                </div>
-                            </div><!--end card-body-->
-                            <div class="card-body bg-light-alt text-center">
-                                <span class="text-muted d-none d-sm-inline-block">Mannatthemes © 2020</span>
+                                </form>
                             </div>
-                        </div><!--end card-->
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end col-->
-        </div><!--end row-->
-    </div><!--end container-->
-    <!-- End Log In page -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dark-transparent sidebartoggler"></div>
+    <!-- Import Js Files -->
+    <script src="{{ asset('adm/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('adm/assets/libs/simplebar/dist/simplebar.min.js') }}"></script>
+    <script src="{{ asset('adm/assets/js/theme/app.init.js') }}"></script>
+    <script src="{{ asset('adm/assets/js/theme/theme.js') }}"></script>
+    <script src="{{ asset('adm/assets/js/theme/app.min.js') }}"></script>
 
-
-
-
-    <!-- jQuery  -->
-    <script src="{{ asset('adm/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/waves.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/feather.min.js') }}"></script>
-    <script src="{{ asset('adm/assets/js/simplebar.min.js') }}"></script>
-
-
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
 
-</html> --}}
+</html>
+

@@ -85,6 +85,14 @@
                                         <span class="hide-menu">Kandidat</span>
                                     </a>
                                 </li>
+                                <li class="sidebar-item">
+                                    <a href="{{ route('admin.suara.index') }}" class="sidebar-link">
+                                        <div class="round-16 d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-circle"></i>
+                                        </div>
+                                        <span class="hide-menu">Hasil voting</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 

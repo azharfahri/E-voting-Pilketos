@@ -1,11 +1,13 @@
 <?php
 
+
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KandidatsController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PemilihController;
 use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\SuaraController;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/user', function () {
+    return view('user.login');
 });
 
 Auth::routes();
@@ -34,7 +40,12 @@ Route::group([
     Route::resource('periode', PeriodeController::class);
     Route::resource('pemilih', PemilihController::class);
     Route::resource('kandidat', KandidatsController::class);
+    Route::resource('suara', SuaraController::class);
 });
+
+
+
+
 
 
 

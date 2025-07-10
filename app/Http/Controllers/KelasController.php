@@ -33,15 +33,40 @@ class KelasController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255|unique:kelas,nama',
-            'id_jurusan'=> 'required|exists:jurusans,id',
         ]);
+
+        $nama = strtolower($request->nama);
+        $id_jurusan = $this->deteksiJurusan($nama);
+
+        if (!$id_jurusan) {
+            return back()->with('error', 'Nama kelas tidak valid, tidak sesuai jurusan.');
+        }
+
         $kelas = new Kelas();
         $kelas->nama = $request->nama;
-        $kelas->id_jurusan = $request->id_jurusan;
+        $kelas->id_jurusan = $id_jurusan;
         $kelas->save();
 
         return redirect()->route('admin.kelas.index')->with('success', 'Data Berhasil Ditambahkan');
     }
+
+    private function deteksiJurusan($namaKelas)
+    {
+        $namaKelas = strtolower($namaKelas);
+        $jurusans = Jurusan::all();
+
+        foreach ($jurusans as $jurusan) {
+            if ($jurusan->singkatan && str_contains($namaKelas, strtolower($jurusan->singkatan))) {
+                return $jurusan->id;
+            }
+        }
+
+        return null;
+    }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -58,24 +83,31 @@ class KelasController extends Controller
     {
         $jurusan = Jurusan::all();
         //$kelas = Kelas::FindOrFail($id);
-        return view('admin.kelas.edit', compact('kelas','jurusan'));
+        return view('admin.kelas.edit', compact('kelas', 'jurusan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Kelas $kelas)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:255|unique:kelas,nama,' . $kelas->id,
-            'id_jurusan'=> 'required|exists:jurusans,id',
-        ]);
-        $kelas->nama = $request->nama;
-        $kelas->id_jurusan = $request->id_jurusan;
-        $kelas->save();
-        return redirect()->route('admin.kelas.index')->with('success','Data Berhasil Diubah');
+{
+    $request->validate([
+        'nama' => 'required|string|max:255|unique:kelas,nama,' . $kelas->id,
+    ]);
 
+    $id_jurusan = $this->deteksiJurusan(strtolower($request->nama));
+
+    if (!$id_jurusan) {
+        return back()->with('error', 'Nama kelas tidak valid, tidak sesuai jurusan.');
     }
+
+    $kelas->nama = $request->nama;
+    $kelas->id_jurusan = $id_jurusan;
+    $kelas->save();
+
+    return redirect()->route('admin.kelas.index')->with('success', 'Data Berhasil Diubah');
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,7 +117,7 @@ class KelasController extends Controller
 
         try {
             $kelas->delete();
-        return redirect()->route('admin.kelas.index')->with('success','Data Telah Berhasil Dihapus');
+            return redirect()->route('admin.kelas.index')->with('success', 'Data Telah Berhasil Dihapus');
         } catch (\Throwable $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

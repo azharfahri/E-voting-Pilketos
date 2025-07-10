@@ -30,9 +30,19 @@
                                 {{ $message }}
                             @enderror
                         </div>
+
+                        {{-- <div class="form-floating mb-3">
+                            <select class="form-select" name="id_kelas">
+                                    <option disabled selected>Pilih Jurusan</option>
+
+                                @foreach ($kelas as $data)
+                                    <option value="{{ $data->id }}">{{ $data->jurusan->nama }}</option>
+                                @endforeach
+                            </select>
+                            <label for="tb-name">Jurusan</label>
+                        </div> --}}
                         <div class="form-floating mb-3">
                             <select class="form-select" name="id_kelas">
-                                <option disabled selected>Pilih Kelas</option>
                                 @if ($kelas->count() == 0)
                                     <option disabled selected>Kelas belum ada, Tambah kelas terlebih dahulu</option>
                                 @else
