@@ -1,34 +1,6 @@
 @extends('layouts.admin')
 @section('content')
     <h1>Rekapan Suara</h1>
-    <div class="row mt-4">
-        @foreach ($kandidat as $data)
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <img src="{{ asset('storage/' . $data->foto_ketua) }}" alt="Foto Ketua" class="rounded-circle me-3"
-                                style="width: 60px; height: 60px; object-fit: cover;">
-                            <img src="{{ asset('storage/' . $data->foto_wakil) }}" alt="Foto Wakil Ketua"
-                                class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;">
-                        </div>
-                        <h5 class="fw-bold mb-1">Paslon No. {{ $data->no_urut }}</h5>
-                        <p class="mb-1">Ketua: <span class="text-primary fw-semibold">{{ $data->nama_ketua }}</span></p>
-                        <p class="mb-1">Wakil: <span class="text-primary fw-semibold">{{ $data->nama_wakil }}</span></p>
-                        <p class="mb-1">Kelas Ketua: <span class="text-dark">{{ $data->kelasKetua->nama }}</span></p>
-                        <p class="mb-1">Kelas Wakil: <span class="text-dark">{{ $data->kelasWakil->nama }}</span></p>
-                        <p class="mb-1">Periode: <span
-                                class="text-dark">{{ \Carbon\Carbon::parse($data->periode->mulai_vote)->format('Y') }}</span>
-                        </p>
-                        <p class="mb-0">Jumlah Suara: <span class="fw-bold">{{ $data->jumlah_suara }}</span></p>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-
-    
-
     {{-- Form Filter --}}
     <form method="GET" action="{{ route('admin.suara.index') }}" class="mb-4 d-flex gap-3 align-items-end">
         <div class="form-group">
@@ -58,6 +30,37 @@
             <a href="{{ route('admin.suara.index') }}" class="btn btn-secondary">Reset</a>
         </div>
     </form>
+
+
+    <div class="row mt-4">
+        @foreach ($kandidat as $data)
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <img src="{{ asset('storage/' . $data->foto_ketua) }}" alt="Foto Ketua"
+                                class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                            <img src="{{ asset('storage/' . $data->foto_wakil) }}" alt="Foto Wakil Ketua"
+                                class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;">
+                        </div>
+                        <h5 class="fw-bold mb-1">Paslon No. {{ $data->no_urut }}</h5>
+                        <p class="mb-1">Ketua: <span class="text-primary fw-semibold">{{ $data->nama_ketua }}</span></p>
+                        <p class="mb-1">Wakil: <span class="text-primary fw-semibold">{{ $data->nama_wakil }}</span></p>
+                        <p class="mb-1">Kelas Ketua: <span class="text-dark">{{ $data->kelasKetua->nama }}</span></p>
+                        <p class="mb-1">Kelas Wakil: <span class="text-dark">{{ $data->kelasWakil->nama }}</span></p>
+                        <p class="mb-1">Periode: <span
+                                class="text-dark">{{ \Carbon\Carbon::parse($data->periode->mulai_vote)->format('Y') }}</span>
+                        </p>
+                        <p class="mb-0">Jumlah Suara: <span class="fw-bold">{{ $data->jumlah_suara }}</span></p>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+
+
+
 
     <div class="row">
         {{-- KIRI: Rekap Jurusan --}}

@@ -22,13 +22,15 @@ Route::get('/user', function () {
     return view('user.login');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/testing', function () {
     return view('layouts.admin');
 });
+
+
 
 Route::group([
     'prefix' => 'admin',
@@ -53,6 +55,7 @@ Route::middleware('auth:user')->group(function () {
     Route::post('/vote/{id}', [UserDashboardController::class, 'vote'])->name('user.vote');
 });
 
+Auth::routes();
 
 
 

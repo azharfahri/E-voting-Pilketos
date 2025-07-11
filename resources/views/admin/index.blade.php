@@ -75,7 +75,7 @@
                     <h5 class="card-title fw-semibold mb-1">
                         Hasil Vote Sementara
                     </h5>
-                    <p class="card-subtitle mb-0">Every month</p>
+                    {{-- <p class="card-subtitle mb-0">Every month</p> --}}
                     <canvas id="salary" class="mb-7 pb-8 mx-n4"></canvas>
                     <div class="d-flex align-items-center justify-content-between">
                     </div>

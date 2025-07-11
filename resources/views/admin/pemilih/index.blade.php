@@ -34,7 +34,7 @@
 
                         @forelse ($pemilih as $item)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
+                                <th scope="row">{{ $loop->iteration + ($pemilih->currentPage() - 1) * $pemilih->perPage() }}</th>
                                 <td>{{ $item->nis }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->kelas?->nama }}</td>
@@ -63,6 +63,10 @@
                     @endforelse
 
                 </table>
+                <div class="d-flex justify-content-center mt-4">
+    {{ $pemilih->links() }}
+</div>
+
             </div>
         </div>
     </div>

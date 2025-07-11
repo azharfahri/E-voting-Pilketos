@@ -11,18 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('adm/assets/images/logos/favicon.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('smk.png') }}" />
 
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('adm/assets/css/styles.css') }}" />
 
-    <title>Modernize Bootstrap Admin</title>
+    <title>Masuk - Voting Online Ketua Osis</title>
 </head>
 
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('adm/assets/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
+        <img src="{{ asset('smk.png') }}" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <div id="main-wrapper" class="auth-customizer-none">
         <div
@@ -32,12 +32,14 @@
                     <div class="col-md-8 col-lg-6 col-xxl-3 auth-card">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="#"
-                                    class="text-nowrap logo-img text-center d-block mb-5 w-100">
-                                    <img src="{{ asset('adm/assets/images/logos/dark-logo.svg') }}" class="dark-logo" alt="Logo-Dark" />
-                                    <img src="{{ asset('adm/assets/images/logos/light-logo.svg') }}" class="light-logo"
+                                <a
+                                    class="text-nowrap logo-img text-center d-block mb-5 w-100 " style="width: 35%">
+                                    <img src="{{ asset('smk.png') }}" class="dark-logo" alt="Logo-Dark" />
+                                    <img src="{{ asset('smk.png') }}" class="light-logo"
                                         alt="Logo-light" />
                                 </a>
+                                <h4 align="center">Masuk</h4>
+                                <p>Masuk menggunakan akun yang sudah admin berikan!</p>
                                 <form method="POST" action="{{ route('user.login') }}">
                                     @csrf
                                     <div class="mb-3">

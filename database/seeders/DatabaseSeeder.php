@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true,
             'password' => bcrypt('admin123'),
         ]);
+        $this->call([
+            JurusanSeeder::class,
+            KelasSeeder::class,
+            UserSeeder::class,
+        ]);
     }
 }

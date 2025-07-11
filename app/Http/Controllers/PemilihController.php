@@ -13,7 +13,7 @@ class PemilihController extends Controller
      */
     public function index()
     {
-        $pemilih = User::where('is_admin', false)->get();
+        $pemilih = User::where('is_admin', false)->paginate(10);
         return view('admin.pemilih.index', compact('pemilih'));
     }
 
@@ -61,7 +61,7 @@ class PemilihController extends Controller
     public function edit(User $pemilih)
     {
         $kelas = Kelas::all();
-        return view('admin.pemilih.edit', compact('kelas' , 'pemilih'));
+        return view('admin.pemilih.edit', compact('kelas', 'pemilih'));
     }
 
     /**
@@ -90,7 +90,7 @@ class PemilihController extends Controller
     {
         try {
             $pemilih->delete();
-        return redirect()->route('admin.pemilih.index')->with('success','Data Telah Berhasil Dihapus');
+            return redirect()->route('admin.pemilih.index')->with('success', 'Data Telah Berhasil Dihapus');
         } catch (\Throwable $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

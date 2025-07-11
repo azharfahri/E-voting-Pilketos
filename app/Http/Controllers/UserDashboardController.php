@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kandidats;
 use App\Models\Suara;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
@@ -13,14 +14,24 @@ class UserDashboardController extends Controller
     {
         $user = Auth::guard('user')->user();
 
-        if ($user->status_pemilih === 'sudah memilih') {
-            return view('user.dashboard', ['sudah_memilih' => true]);
+        $sudah_memilih = $user->status_pemilih === 'sudah memilih';
+        $kandidats = Kandidats::all();
+
+        $labels = [];
+        $dataSuara = [];
+
+        foreach ($kandidats as $kandidat) {
+            $labels[] = 'Paslon No. ' . $kandidat->no_urut;
+            $dataSuara[] = $kandidat->jumlah_suara;
         }
 
-        $kandidats = Kandidats::all();
+
         return view('user.dashboard', [
-            'sudah_memilih' => false,
-            'kandidats' => $kandidats
+            'user' => $user,
+            'sudah_memilih' => $sudah_memilih,
+            'kandidats' => $kandidats,
+            'chart_labels' => $labels,
+            'chart_data' => $dataSuara,
         ]);
     }
 
@@ -42,6 +53,7 @@ class UserDashboardController extends Controller
         $kandidat = Kandidats::findOrFail($id);
         $kandidat->increment('jumlah_suara');
 
-        return redirect()->route('user.dashboard')->with('success', 'Terima kasih, suara kamu berhasil dikirim yaa');
+
+        return redirect()->route('user.dashboard')->with('success', 'Terima kasih, suara kamu berhasil dikirim.');
     }
 }

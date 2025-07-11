@@ -17,8 +17,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <a href="{{ route('admin.kelas.create') }}" type="button" class="btn btn-primary">Tambah</a>
-                <table class="table">
+
+                <a href="{{ route('admin.kelas.create') }}" type="button" class="btn btn-primary mb-3">Tambah</a>
+
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -28,18 +30,15 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         @forelse ($kelas as $item)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $loop->iteration + ($kelas->currentPage() - 1) * $kelas->perPage() }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->jurusan->nama }}</td>
                                 <td>
                                     <form action="{{ route('admin.kelas.destroy', $item->id) }}" method="POST">
-                                        <a href="{{ route('admin.kelas.edit', $item->id) }}" type="button"
+                                        <a href="{{ route('admin.kelas.edit', $item->id) }}"
                                             class="btn btn-success">Edit</a>
-                                        {{-- <a href="#" type="button" class="btn btn-warning">Show</a> --}}
-
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"
@@ -47,15 +46,12 @@
                                     </form>
                                 </td>
                             </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center">Belum ada data</td>
+                            </tr>
+                        @endforelse
                     </tbody>
-                @empty
-                    <tr>
-                        <td align="center" colspan="4">
-                            <h6>belum ada data</h6>
-                        </td>
-                    </tr>
-                    @endforelse
-
                 </table>
             </div>
         </div>
