@@ -36,11 +36,16 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users', // ini buat admin/login bawaan
     ],
+
+    'user' => [
+        'driver' => 'session',
+        'provider' => 'users', // sama-sama pakai model User
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------

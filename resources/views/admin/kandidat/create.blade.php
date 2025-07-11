@@ -73,7 +73,7 @@
                             <select class="form-select" name="id_periode" required>
                                 <option disabled selected>Pilih Periode</option>
                                 @foreach ($periode as $item)
-                                    <option value="{{ $item->id }}">{{ $item->mulai_vote }}</option>
+                                    <option value="{{ $item->id }}">{{ \Carbon\Carbon::parse($item->mulai_vote)->format('Y') }}</option>
                                 @endforeach
                             </select>
                             <label>Periode</label>

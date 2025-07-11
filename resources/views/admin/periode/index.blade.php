@@ -32,8 +32,8 @@
                         @forelse ($periode as $item)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ \Carbon\Carbon::parse($item->mulai_vote)->format('d M Y, H:i') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->selesai_vote)->format('d M Y, H:i') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->mulai_vote)->format('d M Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->selesai_vote)->format('d M Y') }}</td>
                                 <td>
                                     <form action="{{ route('admin.periode.destroy', $item->id) }}" method="POST">
                                         <a href="{{ route('admin.periode.edit', $item->id) }}" type="button"

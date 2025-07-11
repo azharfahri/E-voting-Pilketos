@@ -44,7 +44,7 @@
                                 <td>{{ $item->nama_wakil }}</td>
                                 <td>{{ $item->kelasKetua->nama ?? '-' }}</td>
                                 <td>{{ $item->kelasWakil->nama ?? '-' }}</td>
-                                <td>{{ $item->periode->mulai_vote ?? '-' }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->periode->mulai_vote)->format('Y') ?? '-' }}</td>
                                 <td>{{ $item->visi }}</td>
                                 <td>{{ $item->misi }}</td>
                                 <td>

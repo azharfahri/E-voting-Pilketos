@@ -88,7 +88,7 @@
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('adm/assets/css/styles.css') }}" />
 
-    <title>Modernize Bootstrap Admin</title>
+    <title>Admin E Pilketos</title>
 </head>
 
 <body>
@@ -114,8 +114,8 @@
                         <div
                             class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
                             <div class="auth-max-width col-sm-8 col-md-6 col-xl-7 px-4">
-                                <h2 class="mb-1 fs-7 fw-bolder">Welcome to Ecommerce</h2>
-                                <p class="mb-7">Your Admin Dashboard</p>
+                                <h2 class="mb-1 fs-7 fw-bolder">Selamat datang admin</h2>
+                                <p class="mb-7">Admin Login</p>
 
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
@@ -154,11 +154,6 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}
                                     </button>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-medium">Dont have any account?</p>
-                                        <a href="{{ route('register') }}"
-                                            class="text-primary text-gradient font-weight-bold">Register</a>
-                                    </div>
                                 </form>
                             </div>
                         </div>

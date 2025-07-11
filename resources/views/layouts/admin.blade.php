@@ -42,6 +42,7 @@
 
         </div>
     </div>
+    
     <div class="dark-transparent sidebartoggler"></div>
     <script src="{{ asset('adm/assets/js/vendor.min.js')}}"></script>
     <!-- Import Js Files -->

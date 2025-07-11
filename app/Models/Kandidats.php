@@ -34,4 +34,8 @@ class Kandidats extends Model
     {
         return $this->belongsTo(Periode::class, 'id_periode');
     }
+
+    public function suara(){
+        return $this->belongsTo(Suara::class, 'id_kandidat');
+    }
 }

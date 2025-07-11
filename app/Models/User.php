@@ -23,9 +23,14 @@ class User extends Authenticatable
         'email',
         'id_kelas',
         'password',
+        'status_pemilih',
     ];
     public function Kelas(){
         return $this->belongsTo(Kelas::class, 'id_kelas');
+    }
+
+    public function suara(){
+        return $this->belongsTo(Suara::class, 'id_user');
     }
 
     /**

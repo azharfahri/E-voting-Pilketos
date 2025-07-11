@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KandidatsController;
@@ -8,6 +8,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PemilihController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\SuaraController;
+use App\Http\Controllers\UserDashboardController;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -43,8 +44,14 @@ Route::group([
     Route::resource('suara', SuaraController::class);
 });
 
+Route::get('/user/login', [UserLoginController::class, 'showLoginForm'])->name('user.login');
+Route::post('/user/login', [UserLoginController::class, 'login']);
+Route::post('/user/logout', [UserLoginController::class, 'logout'])->name('user.logout');
 
-
+Route::middleware('auth:user')->group(function () {
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::post('/vote/{id}', [UserDashboardController::class, 'vote'])->name('user.vote');
+});
 
 
 
