@@ -13,7 +13,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
+        $kelas = Kelas::with('jurusan')->paginate(10);
         return view('admin.kelas.index', compact('kelas'));
     }
 

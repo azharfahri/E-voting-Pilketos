@@ -21,7 +21,7 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('adm/assets/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
+        <img src="{{ asset('smk.png') }}" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <div id="main-wrapper">
         <!-- Sidebar Start -->
@@ -42,7 +42,7 @@
 
         </div>
     </div>
-    
+
     <div class="dark-transparent sidebartoggler"></div>
     <script src="{{ asset('adm/assets/js/vendor.min.js')}}"></script>
     <!-- Import Js Files -->

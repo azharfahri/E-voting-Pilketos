@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.login');
 });
 
 Route::get('/user', function () {
@@ -24,7 +24,7 @@ Route::get('/user', function () {
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/testing', function () {
     return view('layouts.admin');

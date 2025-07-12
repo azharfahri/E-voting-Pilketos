@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="row gx-3">
+        <h1>Beranda</h1>
         <div class="col-lg-4 col-xxl-2 col-6">
             <div class="card text-white text-bg-success">
                 <div class="card-body p-4">

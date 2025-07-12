@@ -34,12 +34,17 @@
 
                         @forelse ($pemilih as $item)
                             <tr>
-                                <th scope="row">{{ $loop->iteration + ($pemilih->currentPage() - 1) * $pemilih->perPage() }}</th>
+                                <th scope="row">
+                                    {{ $loop->iteration + ($pemilih->currentPage() - 1) * $pemilih->perPage() }}</th>
                                 <td>{{ $item->nis }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->kelas?->nama }}</td>
                                 <td>{{ $item->kelas?->jurusan->nama }}</td>
-                                <td>{{ $item->status_pemilih }}</td>
+                                @if ($item->status_pemilih === 'sudah memilih')
+                                <td><span class="badge bg-success-subtle text-success">Sudah Memilih</span></td>
+                                @else
+                                <td><span class="badge bg-danger-subtle text-danger">Belum Memilih</span></td>
+                                @endif
                                 <td>
                                     <form action="{{ route('admin.pemilih.destroy', $item->id) }}" method="POST">
                                         <a href="{{ route('admin.pemilih.edit', $item->id) }}" type="button"
@@ -64,8 +69,8 @@
 
                 </table>
                 <div class="d-flex justify-content-center mt-4">
-    {{ $pemilih->links() }}
-</div>
+                    {{ $pemilih->links() }}
+                </div>
 
             </div>
         </div>

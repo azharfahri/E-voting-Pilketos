@@ -56,7 +56,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">E-Pilketos</a>
+                                    <img src="{{ asset('smk.png') }}" width="5%" class="dark-logo" alt="Logo-Dark" />
+            <a class="navbar-brand fw-bold" href="">E-Pilketos</a>
 
             <div class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav align-items-center">
@@ -116,10 +117,10 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="text-center votcard bg-white p-4 pt-5 h-100 shadow-sm">
                             <div class="kandidat-wrapper mb-3">
-                                <img class="rounded-circle shadow-sm" src="{{ asset('storage/' . $data->foto_ketua) }}"
-                                    alt="Foto Ketua">
-                                <img class="rounded-circle shadow-sm" src="{{ asset('storage/' . $data->foto_wakil) }}"
-                                    alt="Foto Wakil Ketua">
+                                <img class=" shadow-sm" src="{{ asset('storage/' . $data->foto_ketua) }}"
+                                    alt="Foto Ketua" style="border-radius: 10px">
+                                <img class=" shadow-sm" src="{{ asset('storage/' . $data->foto_wakil) }}"
+                                    alt="Foto Wakil Ketua" style="border-radius: 10px">
                             </div>
                             <h5 class="fw-bold mb-1">Paslon No. {{ $data->no_urut }}</h5>
                             <p class="mb-1">Ketua: <span

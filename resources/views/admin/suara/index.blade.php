@@ -72,7 +72,6 @@
                 <div class="card-body">
                     @forelse ($jurusan as $jrs)
                         <h5 class="mt-3">Jurusan: {{ $jrs->nama }}</h5>
-
                         <p class="fw-bold text-success mb-0"> Sudah Memilih:</p>
                         @php $i = 1; @endphp
                         <ul>

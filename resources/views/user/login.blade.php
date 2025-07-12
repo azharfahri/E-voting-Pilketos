@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
@@ -26,31 +23,37 @@
     </div>
     <div id="main-wrapper" class="auth-customizer-none">
         <div
-            class="position-relative overflow-hidden radial-gradient min-vh-100 w-100 d-flex align-items-center justify-content-center">
-            <div class="d-flex align-items-center justify-content-center w-100">
+            class="position-relative overflow-hidden radial-gradient min-vh-100 w-100 d-flex align-items-center justify-content-center" >
+            <div class="d-flex align-items-center justify-content-center w-100" >
                 <div class="row justify-content-center w-100">
                     <div class="col-md-8 col-lg-6 col-xxl-3 auth-card">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a
-                                    class="text-nowrap logo-img text-center d-block mb-5 w-100 " style="width: 35%">
-                                    <img src="{{ asset('smk.png') }}" class="dark-logo" alt="Logo-Dark" />
-                                    <img src="{{ asset('smk.png') }}" class="light-logo"
-                                        alt="Logo-light" />
+                                <a class="text-nowrap logo-img text-center d-block mb-5 w-100 " style="width: 35%">
+                                    <img src="{{ asset('smk.png') }}" class="dark-logo" alt="Logo-Dark" style="width: 35%" />
+                                    {{-- <img src="{{ asset('smk.png') }}" class="light-logo" alt="Logo-light" /> --}}
                                 </a>
-                                <h4 align="center">Masuk</h4>
+                                <h2 align="center">Masuk</h4>
                                 <p>Masuk menggunakan akun yang sudah admin berikan!</p>
+                                @if (session('error'))
+                                    <div class="alert alert-danger text-center">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                                 <form method="POST" action="{{ route('user.login') }}">
                                     @csrf
                                     <div class="mb-3">
                                         <label class="form-label">Nis</label>
-                                        <input type="text" class="form-control" name="nis" placeholder="Masukan Nis">
+                                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control"
+                                            name="nis" placeholder="Masukan Nis">
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" id="Masukan Password">
+                                        <input type="password" class="form-control" name="password"
+                                            id="Masukan Password" placeholder="Masukan Password">
                                     </div>
-                                    <button class="btn btn-primary w-100 py-8 mb-4 rounded-2" type="submit">Masuk</button>
+                                    <button class="btn btn-primary w-100 py-8 mb-4 rounded-2"
+                                        type="submit">Masuk</button>
                                 </form>
                             </div>
                         </div>
