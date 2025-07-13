@@ -44,6 +44,7 @@ Route::group([
     Route::resource('pemilih', PemilihController::class);
     Route::resource('kandidat', KandidatsController::class);
     Route::resource('suara', SuaraController::class);
+    Route::get('/get-kelas', [SuaraController::class, 'getKelas'])->name('get.kelas');
 });
 
 Route::get('/user/login', [UserLoginController::class, 'showLoginForm'])->name('user.login');
