@@ -32,8 +32,7 @@
                         </div>
                     </div>
 
-                    {{-- Tidak perlu input jurusan lagi karena otomatis dari nama kelas --}}
-
+                    
                     <div class="col-12">
                         <div class="d-md-flex align-items-center">
                             <div class="ms-auto mt-3 mt-md-0">

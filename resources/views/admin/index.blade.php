@@ -6,7 +6,7 @@
             <div class="card text-white text-bg-success">
                 <div class="card-body p-4">
                     <span>
-                        <i class="ti ti-archive fs-8"></i>
+                        <i class="ti ti-user fs-8"></i>
                     </span>
                     <h3 class="card-title mt-3 mb-0 text-white">{{ number_format($jumlahpemilih) }}</h3>
                     <p class="card-text text-white-50 fs-3 fw-normal">
@@ -19,7 +19,7 @@
             <div class="card text-white text-bg-danger">
                 <div class="card-body p-4">
                     <span>
-                        <i class="ti ti-gift fs-8"></i>
+                        <i class="ti ti-user-minus fs-8"></i>
                     </span>
                     <h3 class="card-title mt-3 mb-0 text-white">{{ number_format($belummemilih) }}</h3>
                     <p class="card-text text-white-50 fs-3 fw-normal">
@@ -29,10 +29,10 @@
             </div>
         </div>
         <div class="col-lg-4 col-xxl-2 col-6">
-            <div class="card text-white text-bg-danger">
+            <div class="card text-white text-bg-warning">
                 <div class="card-body p-4">
                     <span>
-                        <i class="ti ti-gift fs-8"></i>
+                        <i class="ti ti-user-check fs-8"></i>
                     </span>
                     <h3 class="card-title mt-3 mb-0 text-white">{{ number_format($sudahmemilih) }}</h3>
                     <p class="card-text text-white-50 fs-3 fw-normal">
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-xxl-2 col-6">
-            <div class="card text-white text-bg-warning">
+            <div class="card text-white text-bg-info">
                 <div class="card-body p-4">
                     <span>
                         <i class="ti ti-users fs-8"></i>
@@ -55,10 +55,10 @@
             </div>
         </div>
         <div class="col-lg-4 col-xxl-2 col-6">
-            <div class="card text-white text-bg-danger">
+            <div class="card text-white text-bg-secondary">
                 <div class="card-body p-4">
                     <span>
-                        <i class="ti ti-gift fs-8"></i>
+                        <i class="ti ti-box fs-8"></i>
                     </span>
                     <h3 class="card-title mt-3 mb-0 text-white">{{ number_format($suaramasuk) }}</h3>
                     <p class="card-text text-white-50 fs-3 fw-normal">

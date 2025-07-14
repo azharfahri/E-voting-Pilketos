@@ -36,10 +36,20 @@
                                 <h2 align="center">Masuk</h4>
                                 <p>Masuk menggunakan akun yang sudah admin berikan!</p>
                                 @if (session('error'))
-                                    <div class="alert alert-danger text-center">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
+                                        <div class="alert alert-danger text-white">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                 <form method="POST" action="{{ route('user.login') }}">
                                     @csrf
                                     <div class="mb-3">

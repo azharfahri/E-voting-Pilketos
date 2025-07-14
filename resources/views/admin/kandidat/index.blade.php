@@ -45,20 +45,25 @@
                                 <td>{{ $item->kelasKetua->nama ?? '-' }}</td>
                                 <td>{{ $item->kelasWakil->nama ?? '-' }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->periode->mulai_vote)->format('Y') ?? '-' }}</td>
-                                <td>{{ $item->visi }}</td>
-                                <td>{{ $item->misi }}</td>
+                                <td title="{{ $item->visi }}">
+                                    {{ \Illuminate\Support\Str::limit($item->visi, 50) }}
+                                </td>
+                                <td title="{{ $item->misi }}">
+                                    {{ \Illuminate\Support\Str::limit($item->misi, 50) }}
+                                </td>
+
                                 <td>
                                     @if ($item->foto_ketua)
-                                        <img src="{{ asset('storage/' . $item->foto_ketua) }}" width="60" height="60"
-                                            style="object-fit: cover;">
+                                        <img src="{{ asset('storage/' . $item->foto_ketua) }}" width="60"
+                                            height="60" style="object-fit: cover;">
                                     @else
                                         -
                                     @endif
                                 </td>
                                 <td>
                                     @if ($item->foto_wakil)
-                                        <img src="{{ asset('storage/' . $item->foto_wakil) }}" width="60" height="60"
-                                            style="object-fit: cover;">
+                                        <img src="{{ asset('storage/' . $item->foto_wakil) }}" width="60"
+                                            height="60" style="object-fit: cover;">
                                     @else
                                         -
                                     @endif
