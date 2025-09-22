@@ -26,7 +26,8 @@
                         <!-- Dashboard -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.dashboard') }}" id="get-url" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admin.dashboard') }}" id="get-url"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-aperture"></i>
                                 </span>
@@ -46,7 +47,7 @@
                             </a>
                             <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                                    <a href="{{ route ('admin.jurusan.index') }}" class="sidebar-link">
+                                    <a href="{{ route('admin.jurusan.index') }}" class="sidebar-link">
                                         <div class="round-16 d-flex align-items-center justify-content-center">
                                             <i class="ti ti-circle"></i>
                                         </div>
@@ -85,17 +86,16 @@
                                         <span class="hide-menu">Kandidat</span>
                                     </a>
                                 </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ route('admin.suara.index') }}" class="sidebar-link">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">Rekap Suara</span>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
-
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.suara.index') }}" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Rekap Suara</span>
+                            </a>
+                        </li>
 
 
 
